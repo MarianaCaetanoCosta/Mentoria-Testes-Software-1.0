@@ -1,6 +1,10 @@
-# Mentoria - Testes de Software 1.0
+# QA e Automação de Testes | E-commerce
 
-Repositório de portfólio que reúne os projetos desenvolvidos durante a Mentoria 1.0 de Testes de Software, organizados por tecnologia e tipo de teste.
+Projeto de portfólio em Qualidade de Software e Automação de Testes, desenvolvido a partir da Mentoria 1.0.
+
+**Base:** Mentoria 1.0  
+**Sistema:** Lojinha  
+**Tecnologias:** Java, RestAssured, Postman, Selenium, Appium, TestComplete, Cucumber e JMeter.
 
 ## Projetos
 
