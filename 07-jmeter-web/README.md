@@ -31,7 +31,7 @@ Projeto de testes de desempenho da aplicação Lojinha Web, utilizando Apache JM
 - Logoff
 - Parametrização de usuários e dados via CSV
 
-## Como executar
+## Como executar pelo Apache JMeter
 
 Abra `Lojinha Web Testes.jmx` no Apache JMeter.
 
@@ -48,6 +48,22 @@ jmeter -n -t "Lojinha Web Testes.jmx" -l resultados-web.jtl
 ```
 
 Verifique no plano de teste se o `CSV Data Set Config` aponta para `dados-teste-web.csv`.
+
+## Executar pelo Visual Studio Code
+
+O VS Code não executa arquivos `.jmx` nativamente. Ele pode ser utilizado para editar o projeto e executar o JMeter pelo terminal integrado.
+
+Exemplo:
+
+```bash
+jmeter -n -t "Lojinha Web Testes.jmx" -l resultados-web.jtl
+```
+
+Para criar ou visualizar o plano de teste graficamente, utilize o Apache JMeter.
+
+## IntelliJ IDEA
+
+O IntelliJ IDEA não é necessário para este projeto. A execução do plano de teste é realizada pelo Apache JMeter, em modo gráfico ou por linha de comando.
 
 ## Relatórios
 
