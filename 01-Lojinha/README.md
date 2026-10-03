@@ -39,12 +39,6 @@ O projeto não possui dependências externas declaradas no pom.xml.
                 └── Main.java
 ```
 
-## Configuração do .env
-
-Este projeto não utiliza variáveis de ambiente nem arquivo .env.
-
-Portanto, não é necessário criar um arquivo .env para executar a aplicação.
-
 ## Como executar
 
 Pré-requisitos:
