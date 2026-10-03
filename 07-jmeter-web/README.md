@@ -1,83 +1,65 @@
-# 🛒 Lojinha Web — Testes de Desempenho com JMeter
+# 07 - JMeter Web
 
-Projeto de **automação de testes de desempenho** da aplicação **Lojinha Web**, desenvolvido utilizando o **Apache JMeter**.
+## Objetivo
 
-O projeto tem como objetivo demonstrar a criação, parametrização e execução de testes de **desempenho, carga e estresse**, utilizando usuários virtuais, dados parametrizados via CSV, gerenciamento de sessão, temporização e relatórios gráficos.
+Projeto de testes de desempenho da aplicação Lojinha Web, utilizando Apache JMeter para avaliar comportamento sob diferentes condições de carga.
 
----
+## Stack utilizada
 
-## 🎯 Objetivo
+- Apache JMeter
+- HTTP
+- CSV Data Set Config
+- Usuários virtuais
+- Temporização
+- Relatórios de desempenho
 
-Avaliar o comportamento da aplicação Lojinha Web sob diferentes condições de utilização, analisando principalmente:
+## Estrutura do projeto
 
-* Tempo de resposta das requisições;
-* Comportamento da aplicação com múltiplos usuários simultâneos;
-* Capacidade de processamento durante períodos prolongados;
-* Comportamento da aplicação sob carga elevada;
-* Quantidade de transações processadas por segundo;
-* Evolução do número de usuários ativos;
-* Identificação de possíveis pontos de degradação de desempenho.
+```text
+07-jmeter-web/
+├── README.md
+├── Lojinha Web Testes.jmx
+└── dados-teste-web.csv
+```
 
----
+## Cenários automatizados
 
-## 🧪 Cenários automatizados
+- Login
+- Cadastro de produto
+- Cadastro de componente
+- Listagem de produtos
+- Logoff
+- Parametrização de usuários e dados via CSV
 
-O plano de testes contempla as principais operações da aplicação:
+## Como executar
 
-1. 🔐 Login
-2. 📦 Cadastro de produto
-3. 🔧 Cadastro de componente
-4. 📋 Listagem de produtos
-5. 🚪 Logoff
+Abra `Lojinha Web Testes.jmx` no Apache JMeter.
 
----
-
-# ▶️ Como executar
-
-### 1. Instalar o Apache JMeter
-
-Instale o [Apache JMeter](https://jmeter.apache.org/download_jmeter.cgi) na versão utilizada no projeto.
-
-### 2. Instalar o JMeter Plugins Manager
-
-Instale o **JMeter Plugins Manager** e habilite os plugins necessários para os gráficos utilizados no projeto.
-
-### 3. Clonar o projeto
+Para execução em modo GUI:
 
 ```bash
-git clone <URL_DO_REPOSITORIO>
+jmeter
 ```
 
-### 4. Abrir o plano de teste
+Para execução em linha de comando:
 
-Abra o arquivo:
-
-```text
-Lojinha Web Testes.jmx
+```bash
+jmeter -n -t "Lojinha Web Testes.jmx" -l resultados-web.jtl
 ```
 
-no Apache JMeter.
+Verifique no plano de teste se o `CSV Data Set Config` aponta para `dados-teste-web.csv`.
 
-### 5. Conferir o arquivo de dados
+## Relatórios
 
-Verifique se o caminho configurado no **CSV Data Set Config** corresponde ao arquivo:
+Gerar relatório HTML:
 
-```text
-dados-teste-web.csv
+```bash
+jmeter -g resultados-web.jtl -o report-web
 ```
 
-### 6. Executar
+O relatório será criado em `report-web/`.
 
-Execute o plano de testes e acompanhe os resultados através dos relatórios configurados.
+## Documentação
 
----
-
-# 👩‍💻 Sobre o projeto
-
-Projeto desenvolvido como parte do meu portfólio de **Qualidade de Software e Automação de Testes**, com foco na aplicação prática do Apache JMeter para criação e execução de testes de desempenho.
-
-O projeto demonstra desde a **gravação das requisições e configuração do ambiente** até a **parametrização dos dados, execução de diferentes tipos de testes e análise dos resultados**.
-
----
-
-⭐ **Projeto desenvolvido para estudos e demonstração de conhecimentos em testes de desempenho e automação com Apache JMeter.**
+- [Apache JMeter](https://jmeter.apache.org/usermanual/)
+- [JMeter Downloads](https://jmeter.apache.org/download_jmeter.cgi)
