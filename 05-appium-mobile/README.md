@@ -1,64 +1,80 @@
-## 📱 Lojinha Mobile — Automação de Testes com JUnit e Appium
+# 05 - Appium Mobile
 
-Projeto de automação de testes mobile da aplicação Lojinha, desenvolvido utilizando Java, JUnit e Appium.
+## Objetivo
 
-O projeto tem como objetivo demonstrar a criação e execução de testes automatizados para o fluxo de login e cadastro de produtos, incluindo a validação de regras de negócio relacionadas ao valor do produto.
+Projeto de automação de testes mobile da aplicação Lojinha, utilizando Java, JUnit e Appium, com foco em login, cadastro de produto e validação de regras de negócio.
 
-## 🎯 Objetivo
+## Stack utilizada
 
-Automatizar e validar o fluxo de utilização da aplicação Lojinha Mobile, contemplando:
+- Java 22
+- Maven
+- JUnit Jupiter API 5.11.0-M2
+- Appium Java Client 9.2.3
+- Android Studio
+- Android SDK
+- Appium Inspector
+- Page Object Model
 
-1. Autenticação do usuário;
-2. Cadastro de produto;
-3. Validação das regras de negócio;
-4. Validação dos valores permitidos para o produto.
+## Estrutura do projeto
 
-## 🧪 Cenários automatizados
+```text
+05-appium-mobile/
+├── README.md
+├── pom.xml
+├── .gitignore
+└── src/test/java/
+    ├── modulos/produto/
+    │   └── ProdutoTest.java
+    └── telas/
+        ├── BaseTela.java
+        ├── FormularioAdicaoProdutoTela.java
+        ├── FormularioAdicionarComponenteTela.java
+        ├── FormularioEditarProdutoTela.java
+        ├── ListagemDeProdutosTela.java
+        └── LoginTela.java
+```
 
-Os testes contemplam as principais funcionalidades da aplicação:
+## Cenários automatizados
 
-1. 🔐 Login
-2. 📦 Cadastro de produto
-3. 💰 Validação do valor do produto utilizando partições de equivalência
+- Login
+- Cadastro de produto
+- Validação de valor do produto
+- Navegação entre telas
 
-## Preparação do ambiente
+## Como executar
 
-* [Intellij](https://www.jetbrains.com/idea/download/?section=windows)
- 
-* [Android Studio](https://developer.android.com/studio?hl=pt-br#downloads) (Baixar o Android Studio e Ferramenta de Linha de comando)
- 
-* [Android SDK](https://androidsdkmanager.azurewebsites.net/build_tools.html)
+Pré-requisitos:
 
-* [Appium](https://github.com/appium/appium-desktop/releases)
+- JDK 22
+- Maven
+- Android Studio e Android SDK
+- Dispositivo ou emulador Android configurado
+- Appium Server
+- Appium Inspector para inspeção dos elementos
 
-* [Appium Inspector](https://github.com/appium/appium-inspector)
+Na raiz do projeto:
 
-## Dependências
+```bash
+mvn clean test
+```
 
-* [Api Junit Jupter](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api/5.11.0-M2)
-* [Appium Java-client ](https://mvnrepository.com/artifact/io.appium/java-client/9.2.3)
+Também é possível executar `ProdutoTest` diretamente pelo IntelliJ IDEA.
 
-## Notas Gerais
+Observação: o `pom.xml` original declara a API do JUnit Jupiter, mas não configura explicitamente um engine JUnit 5. A configuração original foi preservada.
 
-* Notações:
-   - **DisplayName** para dar descrições em português para nossos testes.
+## Relatórios
 
-   - **Before Each**: para capturar o usuário e senha que será utilizado posteriormente nos métodos de teste.
-    
-* Desing Pattern:
-   - **Page Object Model** : O Page Object Model é usado em testes de automação, onde cada página é representada como uma classe. A classe contém os elementos e ações que podem ser realizados na página. Isso torna o código de teste mais sustentável, pois as alterações na página podem ser feitas em um só lugar, em vez de em vários testes.
+Quando gerados pelo Maven Surefire:
 
-## Apresentação
+```text
+target/surefire-reports/
+```
 
+## Documentação
 
-https://github.com/user-attachments/assets/1966595c-b130-498c-8bde-925af6e04d6f
-
-
-## 👩‍💻 Sobre o projeto
-
-Projeto desenvolvido como parte do meu portfólio de **Qualidade de Software e Automação de Testes**, com foco na aplicação prática de **Java, JUnit e Appium** para criação e execução de testes automatizados em aplicações mobile.
-
-O projeto demonstra desde a **configuração do ambiente e identificação dos elementos da aplicação** até a **automação dos fluxos de login e cadastro de produtos, aplicação de partições de equivalência e organização dos testes utilizando o padrão Page Object Model**.
-
-
-
+- [Appium](https://appium.io/docs/en/latest/)
+- [Appium Java Client](https://github.com/appium/java-client)
+- [Android Studio](https://developer.android.com/studio)
+- [Android SDK](https://developer.android.com/tools)
+- [JUnit 5](https://docs.junit.org/5.11.0/)
+- [Maven](https://maven.apache.org/guides/)
