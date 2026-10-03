@@ -49,7 +49,7 @@
         </Arguments>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Configuração dos dados CSV" enabled="true">
-          <stringProp name="filename">C:/Workspace_Jmeter/LojinhaWebJMeter/dados-teste-web.csv</stringProp>
+          <stringProp name="filename">dados-teste-web.csv</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="variableNames"></stringProp>
           <boolProp name="ignoreFirstLine">false</boolProp>
