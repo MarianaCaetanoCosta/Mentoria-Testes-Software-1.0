@@ -1,43 +1,77 @@
-## 🚀 Automação de Testes de API com Postman
+# 03 - Postman API
 
-Projeto de automação de testes de API desenvolvido com Postman, com o objetivo de validar os principais endpoints e regras de negócio da aplicação.
+## Objetivo
 
-## 🎯 Objetivo
+Projeto de automação de testes de API REST com Postman, validando autenticação, produtos, componentes, métodos HTTP, códigos de resposta e regras de negócio.
 
-Automatizar e validar os principais fluxos da API, verificando o correto funcionamento das requisições, respostas, códigos HTTP, dados retornados e regras de negócio.
+## Stack utilizada
 
-O projeto também demonstra a utilização de scripts de teste, variáveis de ambiente, organização de coleções e boas práticas para manutenção e reutilização dos testes automatizados.
+- Postman
+- REST / HTTP
+- JSON
+- JavaScript para scripts de teste e visualização
+- Postman Collection v2.0
 
-## 🧪 Cenários de teste
+## Estrutura do projeto
 
-O plano de testes contempla os principais fluxos da API:
+```text
+03-postman-api/
+├── README.md
+└── Loginha Api.postman_collection.json
+```
 
-1. 🔐 Login
-2. 📋 Listagem de produtos
-3. 📦 Cadastro de produto
-4. ✏️ Atualização de produto
-5. 🗑️ Exclusão de produto e componente
+## Variáveis de ambiente
 
+A collection utiliza a variável de ambiente `base_url` para a URL da API. O token de autenticação também deve ser mantido como variável do ambiente ou da collection, evitando credenciais e tokens fixos no arquivo versionado.
 
-## Lojinha API
-![Login](https://github.com/user-attachments/assets/9e2e31d7-2795-4c64-a25c-2309986d63b5)
-![CadastroProduto](https://github.com/user-attachments/assets/628d6836-d7c7-4687-8a29-19627c302abd)
-![AdicionarComponente](https://github.com/user-attachments/assets/443cdf66-e70d-44df-bfbe-b0eaa988879f)
-![ProdutoCadastrado](https://github.com/user-attachments/assets/a9e0c9cd-9269-4022-8426-ef6543b31c79)
-![ListaDeProduto](https://github.com/user-attachments/assets/48721d2e-0455-4aeb-b179-db16ebb1b660)
+Exemplo:
 
+```text
+base_url = http://<host-da-api>
+token = <token-gerado-no-login>
+```
 
-## Swagger
-![image](https://github.com/user-attachments/assets/d129023f-3b9c-4350-9a81-72d52bba2ddb)
+## Cenários automatizados
 
+- Cadastro de usuário
+- Login e obtenção de token
+- Cadastro de produto
+- Alteração de produto
+- Listagem de produtos
+- Consulta de produto
+- Filtros de produtos
+- Exclusão de produto
+- Consulta e cadastro de componentes
+- Validação de respostas HTTP
 
-## Postman
-![image](https://github.com/user-attachments/assets/c33e4910-99b0-4992-8cae-59295e9a3ca1)
+## Como executar
 
+1. Instale o Postman.
+2. Importe `Loginha Api.postman_collection.json`.
+3. Configure o ambiente com `base_url`.
+4. Execute o login para obter um token válido.
+5. Execute a collection pelo Collection Runner.
 
-## Métodos HTTP
-![image](https://github.com/user-attachments/assets/09323485-520d-4d37-a700-e95b59a3e965)
+## Relatórios
 
+Pelo Postman:
 
-## Códigos de retorno HTTP
-![image](https://github.com/user-attachments/assets/144e6046-1ee7-4264-959b-560f85bdd444)
+- Execute a collection pelo Collection Runner e consulte o resultado da execução.
+
+Pela linha de comando, utilizando Newman:
+
+```bash
+newman run "Loginha Api.postman_collection.json"
+```
+
+Para gerar relatório HTML, com o reporter instalado:
+
+```bash
+newman run "Loginha Api.postman_collection.json" -r cli,html
+```
+
+## Documentação
+
+- [Postman Documentation](https://learning.postman.com/docs/)
+- [Newman Documentation](https://learning.postman.com/docs/collections/using-newman-cli/)
+- [HTTP Semantics](https://httpwg.org/specs/)
