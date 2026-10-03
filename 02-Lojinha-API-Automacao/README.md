@@ -99,6 +99,4 @@ Observação: o pom.xml original declara a API do JUnit Jupiter, mas não config
 
 ## Observações
 
-O projeto foi originalmente desenvolvido no repositório JL_LojinhaApiAutomacao e foi consolidado aqui sem o prefixo JL_.
-
 O conteúdo funcional foi preservado durante a consolidação. O objetivo é organizar os projetos da Mentoria 1.0 em um único repositório de portfólio, sem alterar o repositório original.
