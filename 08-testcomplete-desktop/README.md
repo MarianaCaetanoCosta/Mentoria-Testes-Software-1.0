@@ -1,43 +1,64 @@
-# Lojinha Desktop Automacao
+# 08 - TestComplete Desktop
 
-Neste projeto, realizei testes no aplicativo **Lojinha Desktop**, iniciando com a execução de um checklist de validação para aplicações desktop. Em seguida, implementei testes automatizados utilizando a ferramenta **TestComplete**.
+## Objetivo
 
-## Cheklist de Testes Desktop
-- Regra de negócio
-- Listagem de zero, um ou muitos registros
-- Funcionalidades voltadas a licenciamento
-- Portabilidade e Regressão Visual
-- Interceptação de Requisições
+Projeto de testes da aplicação Lojinha Desktop, iniciando com checklist de validação e evoluindo para automação com TestComplete.
+
+## Stack utilizada
+
+- TestComplete
+- Automação de aplicações Desktop
+- Keyword Tests
+- Name Mapping
+- Testes funcionais
+- Regressão visual
+
+## Estrutura do projeto
+
+```text
+08-testcomplete-desktop/
+├── README.md
+└── TestComplete 15 Projects/
+    └── TestProject1/
+        ├── LojinhaDesktop.pjs
+        └── LojinhaDesktop/
+            ├── KeywordTests/
+            ├── NameMapping/
+            ├── Script/
+            └── TestedApps/
+```
+
+## Checklist de testes
+
+- Regras de negócio
+- Listagem de registros
+- Licenciamento
+- Portabilidade
+- Regressão visual
+- Interceptação de requisições
 - Mensagens de erro
-- Atualização de informações após ação
+- Atualização após ações
 - Comandos de teclado
 - Elementos estruturais das telas
 - Internacionalização
-- Ordenação do foco do cursor nos campos
-- Ausência de conexão com a internet
+- Ordem de foco dos campos
+- Comportamento sem conexão com a internet
 
-## Imagens
+## Como executar
 
-<img width="773" height="489" alt="image" src="https://github.com/user-attachments/assets/02af4657-c150-4355-9dd9-c0c778b28e06" />
+1. Instale o TestComplete.
+2. Abra o projeto `LojinhaDesktop.pjs`.
+3. Verifique a configuração de `TestedApps` e do `NameMapping`.
+4. Execute os testes pelo TestComplete.
 
-<img width="773" height="488" alt="image" src="https://github.com/user-attachments/assets/0c422e13-a15b-422a-ad31-a47e6295f821" />
+Não há comando de execução via Maven ou script de linha de comando configurado neste projeto.
 
-<img width="765" height="484" alt="image" src="https://github.com/user-attachments/assets/61a4b7cb-ccde-45d5-88a0-8ff32f399b67" />
+## Relatórios
 
-<img width="767" height="486" alt="image" src="https://github.com/user-attachments/assets/10555ae1-b11b-4a33-9520-a2f5ca99b693" />
+Os relatórios são gerados pelo próprio TestComplete durante a execução dos testes. O diretório de relatórios gerados no repositório original não foi migrado, pois corresponde a artefatos de execução; os testes podem gerar novos resultados localmente.
 
-<img width="768" height="485" alt="image" src="https://github.com/user-attachments/assets/ff8ab331-9536-41e7-a26b-7630bc6f8b02" />
+## Documentação
 
-## 🎥 Apresentação
-https://github.com/user-attachments/assets/9387b1be-1316-4b44-b682-5691549b1bf9
-
-
-# 👩‍💻 Sobre o projeto
-
-Projeto desenvolvido como parte do meu portfólio de **Qualidade de Software e Automação de Testes**, com foco na aplicação prática do Apache JMeter para criação e execução de testes de desempenho.
-
-O projeto demonstra desde a **gravação das requisições e configuração do ambiente** até a **parametrização dos dados, execução de diferentes tipos de testes e análise dos resultados**.
-
----
-
-⭐ **Projeto desenvolvido para estudos e demonstração de conhecimentos em testes de desempenho e automação com Apache JMeter.**
+- [TestComplete](https://support.smartbear.com/testcomplete/docs/)
+- [Keyword Tests](https://support.smartbear.com/testcomplete/docs/testing-with/keyword-tests/)
+- [Name Mapping](https://support.smartbear.com/testcomplete/docs/testing-with/object-identification/name-mapping/)
