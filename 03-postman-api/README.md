@@ -49,13 +49,36 @@ As credenciais e o token ficam fora dos dados fixos da collection versionada. Co
 - Consulta e cadastro de componentes
 - Validação de respostas HTTP
 
-## Como executar
+## Como executar pelo Postman
 
-1. Instale o Postman.
+1. Instale e abra o Postman.
 2. Importe `Lojinha-API.postman_collection.json`.
-3. Configure o ambiente com `base_url`.
+3. Configure o ambiente com `base_url` e as demais variáveis necessárias.
 4. Execute o login para obter um token válido.
-5. Execute a collection pelo Collection Runner.
+5. Execute a collection pelo **Collection Runner**.
+6. Consulte os resultados da execução no próprio Postman.
+
+## Executar pelo Visual Studio Code
+
+O VS Code não substitui o Postman para a execução visual da collection. Entretanto, a collection pode ser executada pelo terminal integrado utilizando o Newman.
+
+Com o Newman instalado:
+
+```bash
+newman run "Lojinha-API.postman_collection.json"
+```
+
+Para gerar relatório HTML:
+
+```bash
+newman run "Lojinha-API.postman_collection.json" -r cli,html
+```
+
+Nesse caso, o VS Code é utilizado como ambiente de edição e terminal; a execução da collection é realizada pelo Newman.
+
+## IntelliJ IDEA
+
+O IntelliJ IDEA não é necessário para este projeto, pois a automação é executada pelo Postman ou Newman.
 
 ## Relatórios
 
