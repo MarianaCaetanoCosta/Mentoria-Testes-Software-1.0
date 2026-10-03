@@ -4,7 +4,7 @@
 
     Cenario: Realizar Login
       Dado que esteja na pagina da lojinha
-      Quando o login for realizado com o s seguintes dados
+      Quando o login for realizado com os seguintes dados
         | usuario | admin |
         | senha | admin |
       Entao valido que o login foi realizado
@@ -20,5 +20,5 @@
       Exemplos:
         | usuario | senha |
         | admin | admin |
-        | mariana | 27021987 |
+        | admin | admin |
 
