@@ -28,8 +28,13 @@ Exemplo:
 
 ```text
 base_url = http://<host-da-api>
+usuario_nome = <nome-do-usuario>
+usuario_login = <login-do-usuario>
+usuario_senha = <senha-do-usuario>
 token = <token-gerado-no-login>
 ```
+
+As credenciais e o token ficam fora dos dados fixos da collection versionada. Configure esses valores no ambiente do Postman antes da execução.
 
 ## Cenários automatizados
 
@@ -47,7 +52,7 @@ token = <token-gerado-no-login>
 ## Como executar
 
 1. Instale o Postman.
-2. Importe `Loginha Api.postman_collection.json`.
+2. Importe `Lojinha-API.postman_collection.json`.
 3. Configure o ambiente com `base_url`.
 4. Execute o login para obter um token válido.
 5. Execute a collection pelo Collection Runner.
@@ -61,13 +66,13 @@ Pelo Postman:
 Pela linha de comando, utilizando Newman:
 
 ```bash
-newman run "Loginha Api.postman_collection.json"
+newman run "Lojinha-API.postman_collection.json"
 ```
 
 Para gerar relatório HTML, com o reporter instalado:
 
 ```bash
-newman run "Loginha Api.postman_collection.json" -r cli,html
+newman run "Lojinha-API.postman_collection.json" -r cli,html
 ```
 
 ## Documentação
