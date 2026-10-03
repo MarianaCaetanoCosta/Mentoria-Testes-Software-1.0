@@ -1,0 +1,28 @@
+﻿function Test1()
+{
+  TestedApps.Lojinha.Run();
+  let lojinha = Aliases.Lojinha;
+  let pageControl = lojinha.frmPrincipal.PageControl1;
+  pageControl.ClickTab("LOGIN");
+  let tabSheet = pageControl.TabSheet1;
+  let edit = tabSheet.edtUsuario;
+  edit.Click(12, 10);
+  edit.SetText("admin");
+  edit = tabSheet.edtSenha;
+  edit.Click(40, 9);
+  edit.SetText(Project.Variables.Password1);
+  tabSheet.btnEntrar.ClickButton();
+  pageControl.TabSheet2.Panel3.btnNovoProduto.ClickButton();
+  let panel = pageControl.TabSheet3.Panel6;
+  edit = panel.edtNovoNomeProduto;
+  edit.Click(164, 17);
+  edit.SetText("Macbook");
+  edit = panel.edtNovoValorProduto;
+  edit.Click(120, 4);
+  edit.SetText("0,00");
+  edit = panel.edtNovoCoresProduto;
+  edit.Click(80, 12);
+  edit.SetText("preto, vermelho");
+  panel.btnSalvarProduto.ClickButton();
+  OCR.Recognize(lojinha.dlgLojinha).BlockByText("deve").Click();
+}

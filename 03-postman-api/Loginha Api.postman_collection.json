@@ -1,0 +1,621 @@
+{
+	"info": {
+		"_postman_id": "a0916fa4-8472-41ad-9ccf-17abf8c27be4",
+		"name": "Loginha Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14966341"
+	},
+	"item": [
+		{
+			"name": "Cadastrar um novo usuário",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usuarioNome\": \"Mariana\",\r\n  \"usuarioLogin\": \"marianacaecosta\",\r\n  \"usuarioSenha\": \"27021987\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://165.227.93.41/lojinha/v2/usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "Obter o token do usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "/*{\r\n  \"usuarioLogin\": \"marianacaecosta\",\r\n  \"usuarioSenha\": \"27021987\"\r\n}*/\r\n\r\n{\r\n  \"usuarioLogin\": \"admin\",\r\n  \"usuarioSenha\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar um novo produto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Produto ID</th>\r",
+							"        <th>Produto Nome</th>\r",
+							"        <th>Produto Valor</th>\r",
+							"        <th>Produto Cores</th>\r",
+							"        <th>Produto URL Mock</th>\r",
+							"    </tr>\r",
+							"    <tr>\r",
+							"        <td>{{response.data.produtoId}}</td>\r",
+							"        <td>{{response.data.produtoNome}}</td>\r",
+							"        <td>{{response.data.produtoValor}}</td>\r",
+							"        <td>{{response.data.produtoCores}}</td>\r",
+							"        <td>{{response.data.produtoUrlMock}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"produtoNome\": \"Playstation 5\",\r\n  \"produtoValor\": 7000.00,\r\n  \"produtoCores\": [\r\n    \"preto\", \"rosa\"\r\n  ],\r\n  \"produtoUrlMock\": \"\",\r\n  \"componentes\": [\r\n    {\r\n      \"componenteNome\": \"Controle\",\r\n      \"componenteQuantidade\": 2\r\n    },\r\n    {\r\n      \"componenteNome\": \"Jogo de Aventura\",\r\n      \"componenteQuantidade\": 4\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar o produto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Produto ID</th>\r",
+							"        <th>Produto Nome</th>\r",
+							"        <th>Produto Valor</th>\r",
+							"        <th>Produto Cores</th>\r",
+							"        <th>Produto URL Mock</th>\r",
+							"    </tr>\r",
+							"    <tr>\r",
+							"        <td>{{response.data.produtoId}}</td>\r",
+							"        <td>{{response.data.produtoNome}}</td>\r",
+							"        <td>{{response.data.produtoValor}}</td>\r",
+							"        <td>{{response.data.produtoCores}}</td>\r",
+							"        <td>{{response.data.produtoUrlMock}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"produtoNome\": \"Playstation 2 - Teste\",\r\n  \"produtoValor\": 1500.01,\r\n  \"produtoCores\": [\r\n    \"preto\", \"amarelo\"\r\n  ],\r\n  \"produtoUrlMock\": \"\",\r\n  \"componentes\": [\r\n    {\r\n      \"componenteNome\": \"Controle\",\r\n      \"componenteQuantidade\": 2\r\n    },\r\n    {\r\n      \"componenteNome\": \"Jogo de Aventura\",\r\n      \"componenteQuantidade\": 1\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos/950245"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todos produtos do usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>ID</th>\r",
+							"        <th>Name</th>\r",
+							"        <th>Value</th>\r",
+							"        <th>Colors</th>\r",
+							"        <th>Mock URL</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.data}}\r",
+							"        <tr>\r",
+							"            <td>{{produtoId}}</td>\r",
+							"            <td>{{produtoNome}}</td>\r",
+							"            <td>{{produtoValor}}</td>\r",
+							"            <td>{{produtoCores.join(\", \")}}</td>\r",
+							"            <td>{{produtoUrlMock}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": [\r\n    {\r\n      \"produtoId\": 0,\r\n      \"produtoNome\": \"string\",\r\n      \"produtoValor\": 0,\r\n      \"produtoCores\": [\r\n        \"string\"\r\n      ],\r\n      \"produtoUrlMock\": \"string\",\r\n      \"componentes\": [\r\n        {\r\n          \"componenteId\": 0,\r\n          \"componenteNome\": \"string\",\r\n          \"componenteQuantidade\": 0\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"message\": \"string\",\r\n  \"error\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar um produto do usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Produto ID</th>\r",
+							"        <th>Produto Nome</th>\r",
+							"        <th>Produto Valor</th>\r",
+							"        <th>Produto Cores</th>\r",
+							"        <th>Produto URL Mock</th>\r",
+							"        <th>Componentes</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.data}}\r",
+							"        <tr>\r",
+							"            <td>{{produtoId}}</td>\r",
+							"            <td>{{produtoNome}}</td>\r",
+							"            <td>{{produtoValor}}</td>\r",
+							"            <td>{{produtoCores}}</td>\r",
+							"            <td>{{produtoUrlMock}}</td>\r",
+							"            <td>\r",
+							"                <ul>\r",
+							"                    {{#each componentes}}\r",
+							"                        <li>{{componenteNome}} - {{componenteQuantidade}}</li>\r",
+							"                    {{/each}}\r",
+							"                </ul>\r",
+							"            </td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": [\r\n    {\r\n      \"produtoId\": 0,\r\n      \"produtoNome\": \"string\",\r\n      \"produtoValor\": 0,\r\n      \"produtoCores\": [\r\n        \"string\"\r\n      ],\r\n      \"produtoUrlMock\": \"string\",\r\n      \"componentes\": [\r\n        {\r\n          \"componenteId\": 0,\r\n          \"componenteNome\": \"string\",\r\n          \"componenteQuantidade\": 0\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"message\": \"string\",\r\n  \"error\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar os produtos do usuário usando filtros",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Produto ID</th>\r",
+							"        <th>Produto Nome</th>\r",
+							"        <th>Produto Valor</th>\r",
+							"        <th>Produto Cores</th>\r",
+							"        <th>Produto URL Mock</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.data}}\r",
+							"        <tr>\r",
+							"            <td>{{produtoId}}</td>\r",
+							"            <td>{{produtoNome}}</td>\r",
+							"            <td>{{produtoValor}}</td>\r",
+							"            <td>{{produtoCores}}</td>\r",
+							"            <td>{{produtoUrlMock}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": [\r\n    {\r\n      \"produtoId\": 0,\r\n      \"produtoNome\": \"string\",\r\n      \"produtoValor\": 0,\r\n      \"produtoCores\": [\r\n        \"string\"\r\n      ],\r\n      \"produtoUrlMock\": \"string\",\r\n      \"componentes\": [\r\n        {\r\n          \"componenteId\": 0,\r\n          \"componenteNome\": \"string\",\r\n          \"componenteQuantidade\": 0\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"message\": \"string\",\r\n  \"error\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/v2/produtos?produtoNome=play",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos"
+					],
+					"query": [
+						{
+							"key": "produtoNome",
+							"value": "play"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar os clientes da lojinha",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos/931452"
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Dados de um componente",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					}
+				],
+				"url": "{{base_url}}/v2/produtos/{931469}/componentes/954406"
+			},
+			"response": []
+		},
+		{
+			"name": "Inserir um componente de produto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"componenteNome\": \"ControlePreto\",\r\n  \"componenteQuantidade\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos/{931469}/componentes"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Mock de Produto ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://demo5427070.mockable.io/lojinha/v2/produtos/931472"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Mock de Produto Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Produto ID</th>\r",
+							"        <th>Produto Nome</th>\r",
+							"        <th>Produto Valor</th>\r",
+							"        <th>Produto Cores</th>\r",
+							"        <th>Produto URL Mock</th>\r",
+							"    </tr>\r",
+							"    <tr>\r",
+							"        <td>{{response.data.produtoId}}</td>\r",
+							"        <td>{{response.data.produtoNome}}</td>\r",
+							"        <td>{{response.data.produtoValor}}</td>\r",
+							"        <td>{{response.data.produtoCores}}</td>\r",
+							"        <td>{{response.data.produtoUrlMock}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIxNzYwMSIsInVzdWFyaW9sb2dpbiI6Im1hcmlhbmFjYWVjb3N0YSIsInVzdWFyaW9ub21lIjoiTWFyaWFuYSJ9.UIEVdYXU0uXBRlco9ZDFavxkFrHLHCA2tgkpp0UcrDI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"produtoNome\": \"Produto Mokado\",\r\n  \"produtoValor\": 6999.99,\r\n  \"produtoCores\": [],\r\n  \"produtoUrlMock\": \"http://demo5427070.mockable.io/lojinha/v2/produtos/931472\",\r\n  \"componentes\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/v2/produtos/931472"
+			},
+			"response": []
+		}
+	]
+}

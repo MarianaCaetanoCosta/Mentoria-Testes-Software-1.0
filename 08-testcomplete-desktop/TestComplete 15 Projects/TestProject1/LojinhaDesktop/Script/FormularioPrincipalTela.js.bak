@@ -1,0 +1,3 @@
+﻿function fecharLojinha(){
+  Aliases.Lojinha.frmPrincipal.Close();
+}
