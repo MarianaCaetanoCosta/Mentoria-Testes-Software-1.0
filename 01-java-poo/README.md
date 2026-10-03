@@ -4,8 +4,6 @@
 
 Projeto de nivelamento técnico em Java com foco nos fundamentos de Programação Orientada a Objetos (POO), utilizando uma aplicação simples de loja para praticar classes, objetos, construtores, encapsulamento, herança, polimorfismo, interfaces, enumerações, listas, condicionais e tratamento de exceções.
 
-O projeto foi originalmente desenvolvido no repositório JL_Lojinha e foi consolidado aqui sem o prefixo JL_.
-
 ## Stack utilizada
 
 - Java 22
@@ -17,7 +15,7 @@ O projeto não possui dependências externas declaradas no pom.xml.
 ## Estrutura do projeto
 
 ```text
-01-Lojinha/
+01-java-poo/
 ├── README.md
 ├── pom.xml
 ├── .gitignore
