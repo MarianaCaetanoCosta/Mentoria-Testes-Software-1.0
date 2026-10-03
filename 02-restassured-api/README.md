@@ -19,7 +19,7 @@ Os testes validam regras de negócio do módulo de produtos, utilizando autentic
 ## Estrutura do projeto
 
 ~~~text
-02-Lojinha-API-Automacao/
+02-restassured-api/
 ├── README.md
 ├── pom.xml
 ├── .gitignore
