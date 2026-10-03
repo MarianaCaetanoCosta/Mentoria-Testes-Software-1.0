@@ -14,6 +14,8 @@ Projeto de automação Web com Selenium e Cucumber, utilizando BDD/Gherkin para 
 - Gherkin
 - Page Object
 - JUnit
+- IntelliJ IDEA
+- Visual Studio Code
 
 ## Estrutura do projeto
 
@@ -63,6 +65,44 @@ Executar o ciclo completo, incluindo a geração configurada do relatório:
 mvn verify
 ```
 
+## Executar pelo IntelliJ IDEA
+
+1. Abra a pasta `09-cucumber-selenium` no IntelliJ IDEA.
+2. Aguarde o Maven carregar as dependências.
+3. Acesse `src/test/java/runner/`.
+4. Abra `RunnerTest.java`.
+5. Clique no ícone verde ▶ ao lado da classe para executar o cenário.
+6. Acompanhe a execução do navegador e os resultados no painel **Run**.
+
+O IntelliJ IDEA permite executar testes diretamente pelo editor e acompanhar os resultados no painel de execução. citeturn0search0
+
+Também é possível executar pelo terminal integrado do IntelliJ:
+
+```bash
+mvn test
+```
+
+## Executar pelo Visual Studio Code
+
+1. Abra a pasta `09-cucumber-selenium` no Visual Studio Code.
+2. Instale o **Extension Pack for Java**, caso ainda não esteja instalado.
+3. Aguarde o carregamento do projeto Maven.
+4. Abra `RunnerTest.java`.
+5. Execute o teste pelo comando **Run Test**, quando disponibilizado pela extensão.
+6. Como alternativa, utilize o terminal integrado:
+
+```bash
+mvn test
+```
+
+7. Para gerar o relatório configurado:
+
+```bash
+mvn verify
+```
+
+O VS Code possui suporte a testes Java com JUnit e integração com o Testing Explorer. citeturn0search3
+
 ## Relatórios
 
 O plugin configurado no `pom.xml` gera os relatórios em:
@@ -85,3 +125,4 @@ Os artefatos `target/` existentes no repositório original não foram migrados p
 - [Cucumber](https://cucumber.io/docs/)
 - [Gherkin](https://cucumber.io/docs/gherkin/)
 - [Maven](https://maven.apache.org/guides/)
+
