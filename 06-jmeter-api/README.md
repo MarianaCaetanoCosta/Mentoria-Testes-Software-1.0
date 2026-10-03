@@ -30,7 +30,7 @@ Projeto de automação e testes de desempenho de API REST da aplicação Lojinha
 - Parametrização de dados via CSV
 - Validação das respostas da API
 
-## Como executar
+## Como executar pelo Apache JMeter
 
 Abra `Lojinha API Testes.jmx` no Apache JMeter.
 
@@ -47,6 +47,22 @@ jmeter -n -t "Lojinha API Testes.jmx" -l resultados-api.jtl
 ```
 
 Verifique no plano de teste se o caminho do `CSV Data Set Config` aponta para `dados-teste-api.csv`.
+
+## Executar pelo Visual Studio Code
+
+O VS Code não executa arquivos `.jmx` nativamente. Ele pode ser utilizado para editar os arquivos do projeto e executar o JMeter pelo terminal integrado.
+
+Exemplo:
+
+```bash
+jmeter -n -t "Lojinha API Testes.jmx" -l resultados-api.jtl
+```
+
+Para visualizar e editar o plano de teste de forma completa, utilize o Apache JMeter.
+
+## IntelliJ IDEA
+
+O IntelliJ IDEA não é necessário para este projeto. A execução do plano de teste é realizada pelo Apache JMeter, em modo gráfico ou por linha de comando.
 
 ## Relatórios
 
