@@ -15,6 +15,7 @@ Os testes validam regras de negócio do módulo de produtos, utilizando autentic
 - Jackson Databind 2.17.2
 - API REST / JSON
 - IntelliJ IDEA
+- Visual Studio Code
 
 ## Estrutura do projeto
 
@@ -76,6 +77,35 @@ Para executar apenas os testes:
 mvn test
 ~~~
 
+## Executar pelo IntelliJ IDEA
+
+1. Abra a pasta `02-restassured-api` no IntelliJ IDEA.
+2. Aguarde o Maven carregar as dependências do `pom.xml`.
+3. Acesse `src/test/java/modulos/produto/`.
+4. Abra a classe `ProdutoTest.java`.
+5. Clique no ícone verde ▶ ao lado da classe para executar todos os testes.
+6. Para executar apenas um cenário, clique no ▶ ao lado do respectivo método `@Test`.
+7. Consulte o resultado no painel **Run**.
+
+O IntelliJ IDEA permite executar uma classe de teste ou um método individual diretamente pelo editor. citeturn0search0turn0search1
+
+## Executar pelo Visual Studio Code
+
+1. Abra a pasta `02-restassured-api` no Visual Studio Code.
+2. Instale o **Extension Pack for Java**, caso ainda não esteja instalado.
+3. Aguarde o carregamento do projeto Maven.
+4. Abra `ProdutoTest.java`.
+5. Utilize **Run Test** acima da classe ou do método de teste.
+6. Consulte o resultado no painel **Testing**.
+
+O VS Code possui suporte a JUnit 5 por meio do Java Test Runner. citeturn0search3
+
+Também é possível executar pelo terminal integrado:
+
+~~~bash
+mvn test
+~~~
+
 ## Relatórios
 
 Após a execução dos testes com Maven, os relatórios do Surefire ficam, quando gerados, em:
@@ -90,12 +120,13 @@ Observação: o pom.xml original declara a API do JUnit Jupiter, mas não config
 
 ## Documentação
 
-- Java 22: https://docs.oracle.com/en/java/javase/22/
-- Maven: https://maven.apache.org/guides/
-- JUnit 5: https://docs.junit.org/5.11.0/
-- RestAssured: https://rest-assured.io/
-- Jackson Databind: https://github.com/FasterXML/jackson-databind
-- IntelliJ IDEA: https://www.jetbrains.com/idea/
+- [Java 22 Documentation](https://docs.oracle.com/en/java/javase/22/)
+- [Maven Documentation](https://maven.apache.org/guides/)
+- [JUnit 5 Documentation](https://docs.junit.org/5.11.0/)
+- [RestAssured](https://rest-assured.io/)
+- [Jackson Databind](https://github.com/FasterXML/jackson-databind)
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+- [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Observações
 
