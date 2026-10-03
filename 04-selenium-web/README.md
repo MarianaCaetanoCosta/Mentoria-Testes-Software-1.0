@@ -13,6 +13,8 @@ Projeto de automação de testes Web da aplicação Lojinha, utilizando Java, JU
 - Selenium WebDriver
 - Page Object Model
 - Fluent Page Object Model
+- IntelliJ IDEA
+- Visual Studio Code
 
 ## Estrutura do projeto
 
@@ -57,9 +59,34 @@ Na raiz do projeto:
 mvn clean test
 ```
 
-Também é possível executar `ProdutosTest` diretamente pelo IntelliJ IDEA.
+## Executar pelo IntelliJ IDEA
 
-Observação: o `pom.xml` original declara a API do JUnit Jupiter, mas não configura explicitamente um engine JUnit 5. A configuração original foi preservada.
+1. Abra a pasta `04-selenium-web` no IntelliJ IDEA.
+2. Aguarde o Maven carregar as dependências.
+3. Acesse `src/test/java/modulos/produtos/`.
+4. Abra `ProdutosTest.java`.
+5. Clique no ícone verde ▶ ao lado da classe para executar todos os testes.
+6. Para executar um cenário específico, utilize o ▶ ao lado do método `@Test`.
+7. Acompanhe a execução e os resultados no painel **Run**.
+
+O IntelliJ IDEA permite executar testes JUnit diretamente pelo editor. citeturn0search0turn0search1
+
+## Executar pelo Visual Studio Code
+
+1. Abra a pasta `04-selenium-web` no Visual Studio Code.
+2. Instale o **Extension Pack for Java**, caso ainda não esteja instalado.
+3. Aguarde o carregamento do projeto Maven.
+4. Abra `ProdutosTest.java`.
+5. Utilize **Run Test** acima da classe ou do método de teste.
+6. Consulte o resultado no painel **Testing**.
+
+O Java Test Runner do VS Code oferece suporte a JUnit 5 e permite executar e depurar os testes. citeturn0search3
+
+Também é possível executar pelo terminal integrado:
+
+```bash
+mvn test
+```
 
 ## Relatórios
 
@@ -75,3 +102,7 @@ target/surefire-reports/
 - [JUnit 5](https://docs.junit.org/5.11.0/)
 - [Maven](https://maven.apache.org/guides/)
 - [Java](https://docs.oracle.com/en/java/javase/22/)
+
+## Observações
+
+O `pom.xml` original declara a API do JUnit Jupiter, mas não configura explicitamente um engine JUnit 5. A configuração original foi preservada.
