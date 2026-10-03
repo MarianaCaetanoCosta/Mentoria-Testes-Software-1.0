@@ -17,7 +17,7 @@ Projeto de automação de testes de API REST com Postman, validando autenticaç�
 ```text
 03-postman-api/
 ├── README.md
-└── Loginha Api.postman_collection.json
+└── Lojinha-API.postman_collection.json
 ```
 
 ## Variáveis de ambiente
