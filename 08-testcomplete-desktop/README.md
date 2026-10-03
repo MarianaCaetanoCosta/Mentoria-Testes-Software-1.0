@@ -44,14 +44,22 @@ Projeto de testes da aplicação Lojinha Desktop, iniciando com checklist de val
 - Ordem de foco dos campos
 - Comportamento sem conexão com a internet
 
-## Como executar
+## Como executar pelo TestComplete
 
-1. Instale o TestComplete.
+1. Instale e abra o TestComplete.
 2. Abra o projeto `LojinhaDesktop.pjs`.
 3. Verifique a configuração de `TestedApps` e do `NameMapping`.
 4. Execute os testes pelo TestComplete.
 
 Não há comando de execução via Maven ou script de linha de comando configurado neste projeto.
+
+## IntelliJ IDEA
+
+O IntelliJ IDEA não é utilizado para executar este projeto. A automação depende do ambiente do TestComplete e de sua configuração de aplicação, objetos e Name Mapping.
+
+## Visual Studio Code
+
+O VS Code pode ser utilizado apenas para visualizar ou editar arquivos de texto do projeto. Ele não substitui o TestComplete para executar os testes automatizados deste projeto.
 
 ## Relatórios
 
