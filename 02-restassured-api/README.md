@@ -195,4 +195,4 @@ A configuração utiliza `allure-jupiter` para integração com JUnit 5, `allure
 
 ## Observações
 
-O conteúdo funcional dos testes foi preservado durante a consolidação. A configuração do `pom.xml` foi atualizada para execução com JUnit 5, geração dos resultados do Allure e geração do relatório HTML pelo Maven. O repositório original da Mentoria 1.0 não foi alterado.
+O conteúdo funcional dos testes foi preservado durante a consolidação. A configuração do `pom.xml` foi atualizada para execução com JUnit 5, geração dos resultados do Allure e geração do relatório HTML pelo Maven.
