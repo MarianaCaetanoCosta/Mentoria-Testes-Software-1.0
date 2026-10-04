@@ -141,42 +141,50 @@ mvn -Dtest=ProdutoTest test allure:report
 
 ### Maven Surefire
 
-Os testes são executados pelo **JUnit 5** utilizando o **Maven Surefire Plugin**.
+O projeto utiliza o **Maven Surefire Plugin** para executar os testes JUnit 5 e gerar os resultados da execução.
 
-Os relatórios do Surefire ficam em:
+Após executar os testes, os arquivos do Surefire ficam em:
 
 ~~~text
 target/surefire-reports/
 ~~~
 
-Nessa pasta são gerados arquivos `.txt` e `.xml` com os resultados da execução dos testes.
+Nessa pasta são gerados arquivos `.txt` e `.xml` com os resultados dos testes.
+
+Para visualizar o relatório em HTML, execute:
+
+~~~bash
+mvn surefire-report:report
+~~~
+
+Depois, abra no navegador o arquivo:
+
+~~~text
+target/site/surefire-report.html
+~~~
 
 ### Allure Report
 
 O projeto utiliza **Allure Report** para apresentar os resultados dos testes de forma visual.
 
-Os arquivos de resultados são gerados em:
+Execute os testes e gere o relatório com:
 
-~~~text
-target/allure-results/
+~~~bash
+mvn -Dtest=ProdutoTest test allure:report
 ~~~
 
-O relatório HTML é gerado em:
-
-~~~text
-target/site/allure-maven-plugin/
-~~~
-
-Arquivo principal:
+O relatório HTML será gerado em:
 
 ~~~text
 target/site/allure-maven-plugin/index.html
 ~~~
 
-Comando para executar os testes e gerar o relatório:
+Para visualizar o relatório, **abra diretamente o arquivo `index.html` no navegador**.
 
-~~~bash
-mvn -Dtest=ProdutoTest test allure:report
+Os arquivos de resultados utilizados pelo Allure ficam em:
+
+~~~text
+target/allure-results/
 ~~~
 
 A configuração utiliza `allure-jupiter` para integração com JUnit 5, `allure-rest-assured` para integração com RestAssured e AspectJ para instrumentação necessária à geração dos resultados.
