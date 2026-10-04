@@ -22,6 +22,8 @@ Os testes validam regras de negócio do módulo de produtos, utilizando autentic
 
 ## Estrutura do projeto
 
+A estrutura abaixo representa os principais arquivos do projeto e os relatórios gerados após a execução dos testes. O diretório `target/` é gerado pelo Maven e não é versionado no GitHub.
+
 ~~~text
 02-restassured-api/
 ├── README.md
@@ -44,6 +46,13 @@ Os testes validam regras de negócio do módulo de produtos, utilizando autentic
 │               ├── ComponentePojo.java
 │               ├── ProdutoPojo.java
 │               └── UsuarioPojo.java
+└── target/
+    ├── allure-results/
+    ├── surefire-reports/
+    └── site/
+        ├── surefire-report.html
+        └── allure-maven-plugin/
+            └── index.html
 ~~~
 
 ## Testes automatizados
