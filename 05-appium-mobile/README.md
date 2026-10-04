@@ -12,6 +12,7 @@ Projeto de automação de testes mobile da aplicação Lojinha, utilizando Java,
 - Appium Java Client 9.2.3
 - Android Studio
 - Android SDK
+- Appium Server
 - Appium Inspector
 - Page Object Model
 - IntelliJ IDEA
@@ -49,6 +50,26 @@ Para executar a automação mobile, a primeira etapa é instalar o **Android Stu
 
 Neste projeto, não é necessário instalar BlueStacks ou outro emulador inicialmente. O ambiente será configurado utilizando o **Android Studio Emulator (AVD)**, integrado ao Android SDK.
 
+### Downloads
+
+Utilize preferencialmente as páginas oficiais para instalar as ferramentas:
+
+| Ferramenta | Finalidade | Download / documentação |
+|---|---|---|
+| **Android Studio** | IDE, Android SDK e criação do emulador AVD | [Download Android Studio](https://developer.android.com/studio) |
+| **Node.js** | Necessário para instalar o Appium Server via npm | [Download Node.js](https://nodejs.org/en/download) |
+| **Appium Server** | Servidor que recebe e executa os comandos de automação | [Appium Documentation](https://appium.io/docs/en/latest/) |
+| **Appium Inspector** | Inspeção dos elementos da aplicação mobile | [Appium Inspector](https://github.com/appium/appium-inspector/releases) |
+| **Appium UiAutomator2 Driver** | Driver utilizado para automação Android | [UiAutomator2 Driver](https://github.com/appium/appium-uiautomator2-driver) |
+
+> **Importante:** o Appium Server atualmente é instalado pelo **npm**, e não por um instalador separado. Após instalar o Node.js, utilize:
+>
+> ```bash
+> npm install -g appium
+> ```
+>
+> O Appium é instalado pelo npm e, depois, é necessário instalar o driver da plataforma Android. urlDocumentação oficial do Appiumhttps://appium.io/docs/en/latest/
+
 ### 1. Instalar o Android Studio
 
 Instale o Android Studio e conclua a configuração inicial.
@@ -77,15 +98,43 @@ No Android Studio:
 
 > A configuração detalhada da versão do Android será definida durante a preparação do ambiente, de acordo com os requisitos do APK da Lojinha.
 
-### 4. Próximas ferramentas
+### 4. Instalar o Appium Server
 
-Depois que o Android Studio, SDK e emulador estiverem funcionando, configure:
+Depois que o Android Studio, SDK e emulador estiverem funcionando:
 
-- Appium Server;
-- Appium Inspector;
-- projeto de automação no IntelliJ IDEA ou Visual Studio Code.
+1. Instale o **Node.js**.
+2. Abra o terminal.
+3. Execute:
+   
+```bash
+npm install -g appium
+```
 
-A instalação dessas ferramentas não precisa ser feita neste primeiro passo.
+4. Instale o driver Android utilizado pelo Appium:
+
+```bash
+appium driver install uiautomator2
+```
+
+5. Verifique os drivers instalados:
+
+```bash
+appium driver list --installed
+```
+
+6. Inicie o Appium Server:
+
+```bash
+appium
+```
+
+O servidor será iniciado na porta padrão **4723**.
+
+### 5. Instalar o Appium Inspector
+
+Baixe e instale o **Appium Inspector** pela página oficial de releases.
+
+O Inspector será utilizado posteriormente para identificar os elementos da aplicação Lojinha e auxiliar na criação/manutenção dos testes.
 
 ## Como executar
 
@@ -95,6 +144,7 @@ Pré-requisitos:
 - Maven
 - Android Studio
 - Android SDK
+- Node.js e npm
 - Emulador Android (AVD) ou dispositivo físico configurado
 - Appium Server
 - Appium Inspector para inspeção dos elementos
@@ -144,8 +194,11 @@ target/surefire-reports/
 
 - [Appium](https://appium.io/docs/en/latest/)
 - [Appium Java Client](https://github.com/appium/java-client)
+- [Appium Inspector](https://github.com/appium/appium-inspector)
+- [UiAutomator2 Driver](https://github.com/appium/appium-uiautomator2-driver)
 - [Android Studio](https://developer.android.com/studio)
 - [Android SDK](https://developer.android.com/tools)
+- [Node.js](https://nodejs.org/en/download)
 - [JUnit 5](https://docs.junit.org/5.11.0/)
 - [Maven](https://maven.apache.org/guides/)
 
