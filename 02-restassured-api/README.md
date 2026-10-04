@@ -80,14 +80,6 @@ Para executar apenas os testes:
 mvn test
 ~~~
 
-Para executar especificamente os testes de Produto e gerar o relatório Allure:
-
-~~~bash
-mvn -Dtest=ProdutoTest test allure:report
-~~~
-
-O comando acima executa os testes JUnit 5 e, após a execução, gera o relatório HTML do Allure.
-
 ## Executar pelo IntelliJ IDEA
 
 1. Abra a pasta `02-restassured-api` no IntelliJ IDEA.
@@ -98,23 +90,7 @@ O comando acima executa os testes JUnit 5 e, após a execução, gera o relatór
 6. Para executar apenas um cenário, clique no ▶ ao lado do respectivo método `@Test`.
 7. Consulte o resultado no painel **Run**.
 
-### Executar testes e gerar Allure pelo Maven
-
-No IntelliJ IDEA, também é possível criar uma configuração Maven com:
-
-~~~text
--Dtest=ProdutoTest test allure:report
-~~~
-
-**Importante:** o campo **Command line** deve conter somente os argumentos acima. Não coloque `mvn`, pois o IntelliJ já executa o `mvn.cmd` automaticamente.
-
-Após a execução, o relatório é gerado em:
-
-~~~text
-target/site/allure-maven-plugin/index.html
-~~~
-
-Abra esse `index.html` no navegador para visualizar os testes e os resultados disponibilizados pelo Allure.
+Para gerar o relatório Allure pelo Maven, consulte a seção **Relatórios**.
 
 ## Executar pelo Visual Studio Code
 
@@ -131,11 +107,7 @@ Também é possível executar pelo terminal integrado:
 mvn test
 ~~~
 
-Para gerar o relatório Allure pelo terminal:
-
-~~~bash
-mvn -Dtest=ProdutoTest test allure:report
-~~~
+Para gerar os relatórios, consulte a seção **Relatórios**.
 
 ## Relatórios
 
@@ -157,7 +129,7 @@ Para visualizar o relatório em HTML, execute:
 mvn surefire-report:report
 ~~~
 
-Depois, abra no navegador o arquivo:
+Depois, abra no navegador:
 
 ~~~text
 target/site/surefire-report.html
@@ -167,7 +139,7 @@ target/site/surefire-report.html
 
 O projeto utiliza **Allure Report** para apresentar os resultados dos testes de forma visual.
 
-Execute os testes e gere o relatório com:
+Para executar os testes de Produto e gerar o relatório:
 
 ~~~bash
 mvn -Dtest=ProdutoTest test allure:report
