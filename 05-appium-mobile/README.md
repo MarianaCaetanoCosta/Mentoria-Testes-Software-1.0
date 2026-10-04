@@ -68,7 +68,7 @@ Utilize preferencialmente as páginas oficiais para instalar as ferramentas:
 > npm install -g appium
 > ```
 >
-> O Appium é instalado pelo npm e, depois, é necessário instalar o driver da plataforma Android. urlDocumentação oficial do Appiumhttps://appium.io/docs/en/latest/
+> O Appium é instalado pelo npm e, depois, é necessário instalar o driver da plataforma Android.
 
 ### 1. Instalar o Android Studio
 
@@ -138,7 +138,18 @@ O Inspector será utilizado posteriormente para identificar os elementos da apli
 
 ## Como executar
 
-Pré-requisitos:
+> **Importante:** o **Android Studio não é utilizado para executar os testes Java deste projeto**. Ele é utilizado para instalar/configurar o Android SDK, criar e iniciar o emulador Android (AVD) e disponibilizar o dispositivo para o Appium. Os testes automatizados são executados pelo **IntelliJ IDEA**, **Visual Studio Code** ou Maven.
+
+### Ordem recomendada para executar os testes
+
+1. Inicie o emulador Android pelo **Android Studio > Device Manager**.
+2. Confirme que o aplicativo Lojinha está instalado no emulador.
+3. Inicie o **Appium Server** com o comando `appium`.
+4. Abra este projeto no **IntelliJ IDEA** ou **Visual Studio Code**.
+5. Execute o `ProdutoTest.java` pela IDE ou utilize `mvn test` no terminal.
+
+### Pré-requisitos
+
 
 - JDK 22
 - Maven
