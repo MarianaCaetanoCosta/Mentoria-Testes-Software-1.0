@@ -10,7 +10,8 @@ Os testes validam regras de negócio do módulo de produtos, utilizando autentic
 
 - Java 22
 - Maven
-- JUnit Jupiter API 5.11.0-M2
+- JUnit Jupiter 5.11.0-M2
+- Maven Surefire 3.2.5
 - RestAssured 5.5.0
 - Jackson Databind 2.17.2
 - API REST / JSON
@@ -87,8 +88,6 @@ mvn test
 6. Para executar apenas um cenário, clique no ▶ ao lado do respectivo método `@Test`.
 7. Consulte o resultado no painel **Run**.
 
-O IntelliJ IDEA permite executar uma classe de teste ou um método individual diretamente pelo editor. citeturn0search0turn0search1
-
 ## Executar pelo Visual Studio Code
 
 1. Abra a pasta `02-restassured-api` no Visual Studio Code.
@@ -98,8 +97,6 @@ O IntelliJ IDEA permite executar uma classe de teste ou um método individual di
 5. Utilize **Run Test** acima da classe ou do método de teste.
 6. Consulte o resultado no painel **Testing**.
 
-O VS Code possui suporte a JUnit 5 por meio do Java Test Runner. citeturn0search3
-
 Também é possível executar pelo terminal integrado:
 
 ~~~bash
@@ -108,21 +105,28 @@ mvn test
 
 ## Relatórios
 
-Após a execução dos testes com Maven, os relatórios do Surefire ficam, quando gerados, em:
+Os testes são executados pelo **JUnit 5** utilizando o **Maven Surefire Plugin**.
+
+Após a execução com Maven, os relatórios ficam em:
 
 ~~~text
 target/surefire-reports/
 ~~~
 
-Os arquivos TXT e XML do Surefire podem ser consultados nessa pasta.
+Nessa pasta são gerados arquivos `.txt` e `.xml` com os resultados da execução dos testes.
 
-Observação: o pom.xml original declara a API do JUnit Jupiter, mas não configura explicitamente o mecanismo de execução do JUnit 5 nem uma versão do Maven Surefire compatível com JUnit 5. O projeto foi mantido conforme o original, sem alterar essa configuração.
+O relatório é gerado automaticamente quando os testes são executados pelo Maven, por exemplo:
+
+~~~bash
+mvn clean test
+~~~
 
 ## Documentação
 
 - [Java 22 Documentation](https://docs.oracle.com/en/java/javase/22/)
 - [Maven Documentation](https://maven.apache.org/guides/)
 - [JUnit 5 Documentation](https://docs.junit.org/5.11.0/)
+- [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/)
 - [RestAssured](https://rest-assured.io/)
 - [Jackson Databind](https://github.com/FasterXML/jackson-databind)
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
@@ -130,4 +134,4 @@ Observação: o pom.xml original declara a API do JUnit Jupiter, mas não config
 
 ## Observações
 
-O conteúdo funcional foi preservado durante a consolidação. O objetivo é organizar os projetos da Mentoria 1.0 em um único repositório de portfólio, sem alterar o repositório original.
+O conteúdo funcional dos testes foi preservado durante a consolidação. A configuração adicionada ao `pom.xml` serve para permitir a execução dos testes JUnit 5 pelo Maven e a geração dos relatórios do Surefire. O repositório original da Mentoria 1.0 não foi alterado.
