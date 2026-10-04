@@ -26,7 +26,7 @@
             }
           }
         },
-        "url": "http://165.227.93.41/lojinha/v2/usuarios"
+        "url": "{{base_url}}/v2/usuarios"
       },
       "response": []
     },
@@ -619,6 +619,11 @@
     }
   ],
   "variable": [
+    {
+      "key": "base_url",
+      "value": "http://165.227.93.41/lojinha",
+      "type": "string"
+    },
     {
       "key": "usuario_nome",
       "value": "",
