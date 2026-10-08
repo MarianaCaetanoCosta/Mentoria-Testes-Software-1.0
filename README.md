@@ -20,6 +20,17 @@ Projeto de portfólio em Qualidade de Software e Automação de Testes, desenvol
 | 08 | [Automação Desktop com TestComplete](08-testcomplete-desktop/) | TestComplete, Desktop |
 | 09 | [BDD com Cucumber e Selenium](09-cucumber-selenium/) | Cucumber, Gherkin, Selenium |
 
+## Destaques de QA
+
+O portfólio reúne diferentes níveis e tipos de testes, incluindo:
+
+- **Testes de API:** automação com RestAssured e testes funcionais com Postman.
+- **Automação Web:** Selenium e Cucumber com Java.
+- **Automação Mobile:** Appium com Java.
+- **Performance:** testes de API e aplicações Web com JMeter.
+- **BDD:** cenários escritos em Gherkin e execução com Cucumber.
+- **Testes Desktop:** automação com TestComplete.
+
 ## Organização
 
 Cada projeto possui seu próprio README com:
