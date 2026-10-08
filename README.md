@@ -4,7 +4,7 @@ Projeto de portfólio em Qualidade de Software e Automação de Testes, desenvol
 
 **Base:** Mentoria 1.0  
 **Sistema:** Lojinha  
-**Tecnologias:** Java, RestAssured, Postman, Selenium, Appium, TestComplete, Cucumber e JMeter.
+**Tecnologias:** Java, RestAssured, Postman, Selenium, Appium, TestComplete, Cucumber, JMeter e Cypress.
 
 ## Projetos
 
@@ -19,13 +19,14 @@ Projeto de portfólio em Qualidade de Software e Automação de Testes, desenvol
 | 07 | [Testes Web com JMeter](07-jmeter-web/) | JMeter, carga e desempenho |
 | 08 | [Automação Desktop com TestComplete](08-testcomplete-desktop/) | TestComplete, Desktop |
 | 09 | [BDD com Cucumber e Selenium](09-cucumber-selenium/) | Cucumber, Gherkin, Selenium |
+| 10 | [Automação E2E com Cypress](10-cypress-dev-finance/) | Cypress, JavaScript, E2E |
 
 ## Destaques de QA
 
 O portfólio reúne diferentes níveis e tipos de testes, incluindo:
 
 - **Testes de API:** automação com RestAssured e testes funcionais com Postman.
-- **Automação Web:** Selenium e Cucumber com Java.
+- **Automação Web:** Selenium, Cucumber com Java e Cypress.
 - **Automação Mobile:** Appium com Java.
 - **Performance:** testes de API e aplicações Web com JMeter.
 - **BDD:** cenários escritos em Gherkin e execução com Cucumber.
