@@ -138,60 +138,205 @@ O Inspector será utilizado posteriormente para identificar os elementos da apli
 
 ## Como executar
 
-> **Importante:** o **Android Studio não é utilizado para executar os testes Java deste projeto**. Ele é utilizado para instalar/configurar o Android SDK, criar e iniciar o emulador Android (AVD) e disponibilizar o dispositivo para o Appium. Os testes automatizados são executados pelo **IntelliJ IDEA**, **Visual Studio Code** ou Maven.
+A execução da automação mobile utiliza três ferramentas principais:
 
-### Ordem recomendada para executar os testes
+- **Android Studio** → instalação do ambiente Android, criação e inicialização do emulador e instalação do APK.
+- **IntelliJ IDEA** → inicialização do Appium Server e execução dos testes.
+- **Visual Studio Code** → inicialização do Appium Server e execução dos testes.
 
-1. Inicie o emulador Android pelo **Android Studio > Device Manager**.
-2. Confirme que o aplicativo Lojinha está instalado no emulador.
-3. Inicie o **Appium Server** com o comando `appium`.
-4. Abra este projeto no **IntelliJ IDEA** ou **Visual Studio Code**.
-5. Execute o `ProdutoTest.java` pela IDE ou utilize `mvn test` no terminal.
+### 1. Android Studio
 
-### Pré-requisitos
+O Android Studio é utilizado para preparar o ambiente Android e disponibilizar o dispositivo que será utilizado pelo Appium.
 
+#### 1.1 Instalar o Android Studio
 
-- JDK 22
-- Maven
-- Android Studio
+Baixe e instale o Android Studio pela página oficial:
+
+https://developer.android.com/studio
+
+Durante a instalação, mantenha os componentes recomendados, principalmente:
+
 - Android SDK
-- Node.js e npm
-- Emulador Android (AVD) ou dispositivo físico configurado
-- Appium Server
-- Appium Inspector para inspeção dos elementos
+- Android SDK Platform
+- Android SDK Platform-Tools
+- Android Emulator
 
-Na raiz do projeto:
+Após a instalação, abra o Android Studio.
+
+#### 1.2 Configurar o Android SDK
+
+No Android Studio:
+
+1. Acesse **More Actions > SDK Manager**.
+2. Confirme o local de instalação do **Android SDK**.
+3. Na aba **SDK Platforms**, instale uma versão do Android compatível com a aplicação.
+4. Na aba **SDK Tools**, confirme a instalação de:
+   - Android SDK Build-Tools
+   - Android SDK Platform-Tools
+   - Android Emulator
+5. Clique em **Apply** para instalar os componentes necessários.
+
+#### 1.3 Criar o emulador Android
+
+No Android Studio:
+
+1. Acesse **More Actions > Virtual Device Manager** ou **Device Manager**.
+2. Clique em **Create Virtual Device**.
+3. Escolha o modelo de dispositivo desejado.
+4. Clique em **Next**.
+5. Selecione uma imagem do Android instalada no SDK.
+6. Caso necessário, faça o download da imagem.
+7. Conclua a criação do dispositivo.
+
+Depois da criação, o dispositivo aparecerá na lista do **Device Manager**.
+
+Clique no botão ▶ para iniciar o emulador.
+
+#### 1.4 Identificar o nome e o ID do emulador
+
+Com o emulador iniciado, abra um terminal e execute:
 
 ```bash
-mvn clean test
+adb devices
 ```
 
-## Executar pelo IntelliJ IDEA
+O resultado será semelhante a:
 
-1. Abra a pasta `05-appium-mobile` no IntelliJ IDEA.
-2. Aguarde o Maven carregar as dependências.
-3. Confirme que o emulador ou dispositivo Android está disponível.
-4. Inicie o Appium Server.
-5. Acesse `src/test/java/modulos/produto/`.
-6. Abra `ProdutoTest.java`.
-7. Clique no ícone verde ▶ ao lado da classe ou de um método `@Test`.
-8. Acompanhe a execução no painel **Run**.
+```text
+List of devices attached
+emulator-5554    device
+```
 
-## Executar pelo Visual Studio Code
+Nesse exemplo:
 
-1. Abra a pasta `05-appium-mobile` no Visual Studio Code.
-2. Instale o **Extension Pack for Java**, caso ainda não esteja instalado.
-3. Aguarde o carregamento do projeto Maven.
-4. Confirme que o emulador/dispositivo Android e o Appium Server estão ativos.
-5. Abra `ProdutoTest.java`.
-6. Utilize **Run Test** acima da classe ou do método de teste.
-7. Consulte o resultado no painel **Testing**.
+- **ID do dispositivo:** `emulator-5554`
+- **Nome exibido no Android Studio:** corresponde ao dispositivo virtual criado, por exemplo, `Small Phone`.
 
-Também é possível executar pelo terminal integrado:
+O ID obtido pelo comando `adb devices` deve ser utilizado no projeto na capability:
+
+```java
+capacidades.setCapability("appium:udid", "emulator-5554");
+```
+
+O nome do dispositivo pode ser utilizado na capability:
+
+```java
+capacidades.setCapability("appium:deviceName", "Small Phone");
+```
+
+> **Importante:** os valores podem ser diferentes em cada computador. Utilize no projeto os valores correspondentes ao emulador criado no seu ambiente.
+
+#### 1.5 Instalar o APK no emulador
+
+Com o emulador iniciado, instale o APK da aplicação Lojinha.
+
+Uma opção é simplesmente arrastar o arquivo `.apk` para a janela do emulador.
+
+Após a instalação, confirme que o aplicativo **Lojinha** aparece no emulador e pode ser aberto normalmente.
+
+O caminho do APK também precisa estar configurado no `ProdutoTest.java`:
+
+```java
+capacidades.setCapability(
+        "appium:app",
+        "CAMINHO_DO_APK"
+);
+```
+
+No projeto, substitua o caminho pelo local onde o APK está armazenado no computador.
+
+> **Importante:** o emulador deve permanecer ligado durante toda a execução dos testes.
+
+### 2. IntelliJ IDEA
+
+O IntelliJ IDEA é utilizado para iniciar o Appium Server e executar os testes automatizados.
+
+#### 2.1 Abrir o projeto
+
+1. Abra o **IntelliJ IDEA**.
+2. Abra a pasta `05-appium-mobile`.
+3. Aguarde o Maven carregar as dependências do projeto.
+
+#### 2.2 Iniciar o Appium Server
+
+Antes de executar os testes:
+
+1. Confirme que o emulador Android está ligado no Android Studio.
+2. Abra o **Terminal integrado** do IntelliJ IDEA.
+3. Execute:
+
+```bash
+appium
+```
+
+4. Mantenha o terminal com o Appium Server em execução.
+
+O Appium Server deverá estar disponível na porta padrão:
+
+```text
+http://127.0.0.1:4723/
+```
+
+#### 2.3 Executar os testes
+
+Com o:
+
+- Android Studio aberto;
+- emulador Android iniciado;
+- aplicativo Lojinha instalado;
+- Appium Server em execução;
+
+execute os testes:
+
+1. Acesse `src/test/java/modulos/produto/`.
+2. Abra `ProdutoTest.java`.
+3. Clique no ícone verde ▶ ao lado da classe para executar todos os testes.
+4. Para executar apenas um cenário, clique no ▶ ao lado do método `@Test`.
+5. Acompanhe a execução no painel **Run**.
+
+### 3. Visual Studio Code
+
+O Visual Studio Code também pode ser utilizado para iniciar o Appium Server e executar os testes automatizados.
+
+#### 3.1 Abrir o projeto
+
+1. Abra o **Visual Studio Code**.
+2. Abra a pasta `05-appium-mobile`.
+3. Instale o **Extension Pack for Java**, caso ainda não esteja instalado.
+4. Aguarde o carregamento do projeto Maven.
+
+#### 3.2 Iniciar o Appium Server
+
+Antes de executar os testes:
+
+1. Confirme que o emulador Android está ligado no Android Studio.
+2. Abra o **Terminal integrado** do VS Code.
+3. Execute:
+
+```bash
+appium
+```
+
+4. Mantenha o Appium Server em execução.
+
+#### 3.3 Executar os testes
+
+Com o emulador Android e o Appium Server em execução:
+
+1. Abra `src/test/java/modulos/produto/ProdutoTest.java`.
+2. Utilize **Run Test** acima da classe ou do método `@Test`.
+
+Também é possível executar todos os testes pelo terminal.
+
+Abra um **novo terminal integrado**, mantendo o terminal do Appium em execução, e execute:
 
 ```bash
 mvn test
 ```
+
+O resultado da execução será apresentado no terminal.
+
+> **Importante:** o Android Studio deve permanecer com o emulador ligado durante toda a execução dos testes, tanto pelo IntelliJ IDEA quanto pelo Visual Studio Code.
 
 ## Execução dos testes
 
