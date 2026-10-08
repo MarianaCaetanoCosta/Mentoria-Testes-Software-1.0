@@ -185,12 +185,6 @@ Ele pode ser utilizado para editar o README, o CSV e outros arquivos do projeto,
 jmeter -n -t ".\Lojinha API Testes.jmx" -l ".\resultados-api.jtl"
 ```
 
-## IntelliJ IDEA
-
-O IntelliJ IDEA não é necessário para este projeto.
-
-A ferramenta principal para execução e análise dos testes é o Apache JMeter.
-
 ## Documentação
 
 - [Apache JMeter](https://jmeter.apache.org/usermanual/)
