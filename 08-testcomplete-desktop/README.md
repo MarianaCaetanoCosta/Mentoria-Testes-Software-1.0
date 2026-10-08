@@ -59,9 +59,6 @@ Quando houver uma licença válida, a execução poderá ser realizada da seguin
 
 Não há comando de execução via Maven ou script de linha de comando configurado neste projeto.
 
-## Visual Studio Code
-
-O VS Code pode ser utilizado apenas para visualizar ou editar arquivos de texto do projeto. Ele não substitui o TestComplete para executar os testes automatizados deste projeto.
 
 ## Relatórios
 
