@@ -14,6 +14,8 @@ Projeto de automação Web com Selenium e Cucumber, utilizando BDD/Gherkin para 
 - Gherkin
 - Page Object
 - JUnit
+- IntelliJ IDEA
+- Visual Studio Code
 
 ## Estrutura do projeto
 
@@ -87,6 +89,28 @@ mvn verify
 ```
 
 A execução pode ser realizada pelo terminal ou por qualquer ambiente de desenvolvimento compatível com projetos Java/Maven. Não há dependência de uma IDE específica.
+
+## Execução pelas IDEs
+
+### IntelliJ IDEA
+
+O projeto pode ser executado diretamente pelo IntelliJ IDEA, utilizando o suporte a testes Java/Cucumber e o runner `RunnerTest.java`. O IntelliJ IDEA oferece suporte à execução de testes e ao Cucumber mediante o plugin correspondente. citeturn0search4turn0search8
+
+Também é possível executar pelo terminal integrado:
+
+```bash
+mvn test
+```
+
+### Visual Studio Code
+
+O projeto também pode ser executado no Visual Studio Code. O suporte a testes Java permite executar e depurar testes JUnit 4, utilizado pelo `RunnerTest.java`, por meio do Extension Pack for Java. citeturn0search5
+
+Como alternativa, utilize o terminal integrado:
+
+```bash
+mvn test
+```
 
 ## Relatórios
 
