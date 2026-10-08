@@ -2,16 +2,18 @@
 
 ## Objetivo
 
-Projeto de automação e testes de desempenho de API REST da aplicação Lojinha, utilizando Apache JMeter e Swagger como apoio para identificação dos endpoints.
+Projeto de testes de desempenho de API REST da aplicação Lojinha, utilizando Apache JMeter. O plano de testes simula múltiplos usuários realizando autenticação e cadastro de produtos, com parametrização de dados e reutilização de token.
 
 ## Stack utilizada
 
-- Apache JMeter
+- Apache JMeter 5.6.3
 - HTTP / REST
 - JSON
-- Swagger
 - CSV Data Set Config
+- JSON Extractor
 - Autenticação por token
+- HTTP Client 4
+- Swagger
 
 ## Estrutura do projeto
 
@@ -25,57 +27,180 @@ Projeto de automação e testes de desempenho de API REST da aplicação Lojinha
 ## Cenários automatizados
 
 - Login na API
-- Captura e reutilização de token
-- Cadastro de produto
-- Parametrização de dados via CSV
+- Captura do token retornado pelo login
+- Reutilização do token em requisições autenticadas
+- Cadastro de produtos
+- Parametrização de dados através de arquivo CSV
+- Execução com múltiplos usuários simultâneos
+- Simulação de carga com ramp-up
 - Validação das respostas da API
+- Coleta de métricas de tempo de resposta e transações por segundo
 
-## Como executar pelo Apache JMeter
+## Configuração do ambiente
 
-Abra `Lojinha API Testes.jmx` no Apache JMeter.
+### 1. Instalar o Java
 
-Para execução em modo GUI:
+O JMeter precisa do Java instalado.
 
-```bash
-jmeter
+No PowerShell, valide a instalação:
+
+```powershell
+java -version
 ```
 
-Para execução em linha de comando:
+Se o comando retornar a versão do Java, o ambiente está pronto para essa etapa.
 
-```bash
-jmeter -n -t "Lojinha API Testes.jmx" -l resultados-api.jtl
+### 2. Instalar o Apache JMeter
+
+Baixe e extraia o Apache JMeter no Windows.
+
+Depois, localize a pasta `bin`, por exemplo:
+
+```text
+C:\apache-jmeter-5.6.3\bin
 ```
 
-Verifique no plano de teste se o caminho do `CSV Data Set Config` aponta para `dados-teste-api.csv`.
+Você pode executar o JMeter diretamente pelo arquivo:
 
-## Executar pelo Visual Studio Code
+```text
+jmeter.bat
+```
 
-O VS Code não executa arquivos `.jmx` nativamente. Ele pode ser utilizado para editar os arquivos do projeto e executar o JMeter pelo terminal integrado.
+Ou adicionar a pasta `bin` do JMeter ao PATH do Windows para permitir a execução do comando `jmeter` em qualquer terminal.
+
+Valide:
+
+```powershell
+jmeter --version
+```
+
+### 3. Baixar o projeto
+
+Clone o repositório:
+
+```powershell
+git clone https://github.com/MarianaCaetanoCosta/QA-Automacao-de-Testes-E-commerce.git
+```
+
+Entre na pasta do projeto:
+
+```powershell
+cd QA-Automacao-de-Testes-E-commerce\06-jmeter-api
+```
+
+## Como executar no computador
+
+### Opção 1 — Interface gráfica do JMeter
+
+1. Abra o Apache JMeter.
+2. Selecione **File > Open**.
+3. Abra o arquivo:
+   `Lojinha API Testes.jmx`.
+4. Confirme que o arquivo `dados-teste-api.csv` está na mesma pasta do plano de teste.
+5. No plano de teste, verifique o elemento **Configuração dos dados CSV**.
+6. Confirme que o arquivo está configurado como:
+   `dados-teste-api.csv`.
+7. Clique em **Run > Start**.
+8. Acompanhe a execução pelos listeners configurados no plano.
+
+### Opção 2 — Executar pelo PowerShell
+
+Abra o PowerShell dentro da pasta `06-jmeter-api`:
+
+```powershell
+cd C:\Workspace\QA-Automacao-de-Testes-E-commerce\06-jmeter-api
+```
+
+Execute:
+
+```powershell
+jmeter -n -t ".\Lojinha API Testes.jmx" -l ".\resultados-api.jtl"
+```
+
+> Caso o comando `jmeter` não esteja disponível no PATH, execute o `jmeter.bat` utilizando o caminho completo da instalação.
 
 Exemplo:
 
-```bash
-jmeter -n -t "Lojinha API Testes.jmx" -l resultados-api.jtl
+```powershell
+& "C:\apache-jmeter-5.6.3\bin\jmeter.bat" -n -t ".\Lojinha API Testes.jmx" -l ".\resultados-api.jtl"
 ```
 
-Para visualizar e editar o plano de teste de forma completa, utilize o Apache JMeter.
+## Configuração do teste
 
-## IntelliJ IDEA
+O plano de teste está configurado com:
 
-O IntelliJ IDEA não é necessário para este projeto. A execução do plano de teste é realizada pelo Apache JMeter, em modo gráfico ou por linha de comando.
+- **50 usuários virtuais**
+- **Ramp-up de 3 segundos**
+- **1 iteração por usuário**
+- Timer aleatório entre as requisições
+- Dados parametrizados pelo arquivo CSV
+- Autenticação realizada antes do cadastro do produto
+
+O arquivo CSV contém os dados utilizados pelo teste e deve permanecer na mesma pasta do arquivo `.jmx`, salvo se o caminho do **CSV Data Set Config** for alterado.
 
 ## Relatórios
 
-Gerar relatório HTML a partir do arquivo JTL:
+Após a execução em modo não-GUI, o arquivo `resultados-api.jtl` contém os resultados da execução.
 
-```bash
-jmeter -g resultados-api.jtl -o report-api
+Para gerar o relatório HTML:
+
+```powershell
+jmeter -g ".\resultados-api.jtl" -o ".\report-api"
 ```
 
-O relatório será criado em `report-api/`.
+Depois, abra:
+
+```text
+report-api\index.html
+```
+
+O relatório apresenta métricas como:
+
+- Tempo de resposta
+- Latência
+- Taxa de sucesso
+- Quantidade de requisições
+- Throughput
+- Transações por segundo
+- Número de usuários/threads
+- Dados enviados e recebidos
+
+## Visualizações configuradas no JMeter
+
+O plano também possui visualizações para análise de desempenho:
+
+- Aggregate Report
+- Summary Report
+- Active Threads Over Time
+- Response Times Over Time
+- Transactions per Second
+
+## Execução pelo Visual Studio Code
+
+O VS Code não executa arquivos `.jmx` nativamente.
+
+Ele pode ser utilizado para editar o README, o CSV e outros arquivos do projeto, enquanto a execução do JMeter é realizada pelo terminal integrado:
+
+```powershell
+jmeter -n -t ".\Lojinha API Testes.jmx" -l ".\resultados-api.jtl"
+```
+
+## IntelliJ IDEA
+
+O IntelliJ IDEA não é necessário para este projeto.
+
+A ferramenta principal para execução e análise dos testes é o Apache JMeter.
 
 ## Documentação
 
 - [Apache JMeter](https://jmeter.apache.org/usermanual/)
 - [JMeter Downloads](https://jmeter.apache.org/download_jmeter.cgi)
 - [Swagger](https://swagger.io/docs/)
+
+## Observações
+
+- O projeto foi criado utilizando JMeter 5.6.3.
+- O arquivo `dados-teste-api.csv` deve estar disponível no caminho configurado no **CSV Data Set Config**.
+- Os resultados `.jtl` e os relatórios HTML são arquivos gerados durante a execução e não fazem parte da estrutura original do projeto.
+- Para testes de carga, prefira a execução em modo **non-GUI**, utilizando a linha de comando.
+- O endereço da API configurado no plano de teste pode depender da disponibilidade do ambiente utilizado pelo projeto.
