@@ -14,8 +14,6 @@ Projeto de automação Web com Selenium e Cucumber, utilizando BDD/Gherkin para 
 - Gherkin
 - Page Object
 - JUnit
-- IntelliJ IDEA
-- Visual Studio Code
 
 ## Estrutura do projeto
 
@@ -39,85 +37,78 @@ Projeto de automação Web com Selenium e Cucumber, utilizando BDD/Gherkin para 
 ## Cenários automatizados
 
 - Login na aplicação Lojinha
-- Cenário escrito em Gherkin
-- Steps implementados com Cucumber
+- Cenário descrito em Gherkin
+- Cenário parametrizado com diferentes dados de usuário
+- Implementação dos steps com Cucumber
 - Controle do navegador com Selenium
 - Organização utilizando Page Object
+- Geração de relatório de execução
+
+## Preparação do ambiente
+
+### Java
+
+Verifique se o JDK 22 está instalado:
+
+```bash
+java -version
+```
+
+### Maven
+
+Verifique se o Maven está disponível:
+
+```bash
+mvn -version
+```
+
+### Aplicação
+
+A aplicação Lojinha Web deve estar disponível para que os testes de login possam ser executados.
 
 ## Como executar
 
-Pré-requisitos:
+Acesse o diretório do projeto:
 
-- JDK 22
-- Maven
-- Navegador compatível
-- Lojinha Web disponível para teste
+```bash
+cd 09-cucumber-selenium
+```
 
-Executar os testes:
+Execute os testes:
 
 ```bash
 mvn test
 ```
 
-Executar o ciclo completo, incluindo a geração configurada do relatório:
+Para executar o ciclo completo e gerar o relatório configurado:
 
 ```bash
 mvn verify
 ```
 
-## Executar pelo IntelliJ IDEA
-
-1. Abra a pasta `09-cucumber-selenium` no IntelliJ IDEA.
-2. Aguarde o Maven carregar as dependências.
-3. Acesse `src/test/java/runner/`.
-4. Abra `RunnerTest.java`.
-5. Clique no ícone verde ▶ ao lado da classe para executar o cenário.
-6. Acompanhe a execução do navegador e os resultados no painel **Run**.
-
-O IntelliJ IDEA permite executar testes diretamente pelo editor e acompanhar os resultados no painel de execução. citeturn0search0
-
-Também é possível executar pelo terminal integrado do IntelliJ:
-
-```bash
-mvn test
-```
-
-## Executar pelo Visual Studio Code
-
-1. Abra a pasta `09-cucumber-selenium` no Visual Studio Code.
-2. Instale o **Extension Pack for Java**, caso ainda não esteja instalado.
-3. Aguarde o carregamento do projeto Maven.
-4. Abra `RunnerTest.java`.
-5. Execute o teste pelo comando **Run Test**, quando disponibilizado pela extensão.
-6. Como alternativa, utilize o terminal integrado:
-
-```bash
-mvn test
-```
-
-7. Para gerar o relatório configurado:
-
-```bash
-mvn verify
-```
-
-O VS Code possui suporte a testes Java com JUnit e integração com o Testing Explorer. citeturn0search3
+A execução pode ser realizada pelo terminal ou por qualquer ambiente de desenvolvimento compatível com projetos Java/Maven. Não há dependência de uma IDE específica.
 
 ## Relatórios
 
-O plugin configurado no `pom.xml` gera os relatórios em:
+O projeto utiliza o plugin `maven-cucumber-reporting` para gerar o relatório durante a fase `verify`.
 
-```text
-target/reports/cucumber-html-reports/
-```
-
-O arquivo JSON utilizado pelo relatório fica em:
+O relatório utiliza o arquivo JSON gerado pelo Cucumber:
 
 ```text
 target/reports/CucumberReports.json
 ```
 
-Os artefatos `target/` existentes no repositório original não foram migrados porque são resultados gerados; eles podem ser recriados com `mvn verify`.
+Os relatórios gerados ficam em:
+
+```text
+target/reports/
+```
+
+Os artefatos `target/` existentes no repositório original não foram migrados, pois são resultados gerados durante a execução. Eles podem ser recriados localmente com:
+
+```bash
+mvn verify
+```
 
 ## Documentação
 
@@ -126,3 +117,9 @@ Os artefatos `target/` existentes no repositório original não foram migrados p
 - [Gherkin](https://cucumber.io/docs/gherkin/)
 - [Maven](https://maven.apache.org/guides/)
 
+## Observações
+
+- A versão do Java utilizada pelo projeto é a 22.
+- As versões das dependências estão definidas no `pom.xml`.
+- A aplicação Lojinha Web precisa estar disponível para a execução dos testes.
+- O projeto utiliza Cucumber com JUnit e Selenium para automação Web.
