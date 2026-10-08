@@ -193,13 +193,19 @@ Também é possível executar pelo terminal integrado:
 mvn test
 ```
 
-## Relatórios
+## Execução dos testes
 
-Quando gerados pelo Maven Surefire:
+Os testes são executados com **JUnit 5** e utilizam o **Appium Server** para controlar o emulador Android.
 
-```text
-target/surefire-reports/
+A classe `ProdutoTest` utiliza `@TestMethodOrder` e `@Order` para manter a sequência necessária dos cenários, pois alguns testes dependem do estado dos dados criado pelos cenários anteriores.
+
+A execução pode ser feita pela IDE ou pelo Maven:
+
+```bash
+mvn clean test
 ```
+
+O projeto não utiliza Allure ou relatórios adicionais. O foco deste módulo é a automação funcional mobile com Appium, JUnit 5 e Page Object Model.
 
 ## Documentação
 
@@ -215,6 +221,6 @@ target/surefire-reports/
 
 ## Observações
 
-O `pom.xml` original declara a API do JUnit Jupiter, mas não configura explicitamente um engine JUnit 5. A configuração original foi preservada.
+O `pom.xml` utiliza o Selenium BOM 4.27.0 para manter a compatibilidade com o Appium Java Client 9.2.3.
 
-O ambiente de execução mobile será preparado inicialmente com o Android Studio Emulator (AVD). Caso seja necessário reproduzir o ambiente original da mentoria, a configuração utilizada anteriormente poderá ser documentada posteriormente.
+Os testes foram configurados para execução no emulador Android utilizado no projeto, com automação via UiAutomator2.
