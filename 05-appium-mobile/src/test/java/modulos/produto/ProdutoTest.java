@@ -8,8 +8,10 @@ import telas.LoginTela;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
+import java.time.Duration;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DisplayName("Testes Mobile do Módulo de Produto")
 public class ProdutoTest {
 
@@ -19,20 +21,27 @@ public class ProdutoTest {
     public void beforeEach() throws MalformedURLException {
         // Abrir o App
         DesiredCapabilities capacidades = new DesiredCapabilities();
-        capacidades.setCapability("appium:deviceName", "Google Nexus 4");
-        capacidades.setCapability("appium:platformName", "Android");
-        capacidades.setCapability("appium:udid","192.168.232.102:5555");
-        capacidades.setCapability("appium:appPackage","com.lojinha");
-        capacidades.setCapability("appium:appActivity","com.lojinha.ui.MainActivity");
-        capacidades.setCapability("appium:app","C:\\Android\\lojinha-nativa.apk");
 
-        this.app = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capacidades);
-        this.app.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS); //Aguarda 5 segundos para execução de cada comando, passado esse 5 segundos é considerado erro.
+        capacidades.setCapability("appium:deviceName", "Small Phone");
+        capacidades.setCapability("appium:platformName", "Android");
+        capacidades.setCapability("appium:automationName", "UiAutomator2");
+        capacidades.setCapability("appium:udid", "emulator-5554");
+
+        capacidades.setCapability("appium:appPackage", "com.lojinha");
+        capacidades.setCapability("appium:appActivity", "com.lojinha.ui.MainActivity");
+
+        capacidades.setCapability("appium:app", "C:\\Workspace\\1-Mentoria-Teste-Software-2.0-JulioDeLima-09-2026\\QA-Automacao-de-Testes-E-commerce-main\\projetos\\lojinha-mobile\\lojinha-android-nativa\\lojinha-nativa.apk");
+
+        this.app = new AndroidDriver(new URL("http://127.0.0.1:4723/"), capacidades);
+
+        // Aguarda 10 segundos para execução de cada comando.
+        this.app.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
+    @Order(1)
     @DisplayName("Validação do Valor de Produto não permitido")
     @Test
-    public void testValidacaoDoValorDeProdutoNaoPermitido(){
+    public void testValidacaoDoValorDeProdutoNaoPermitido() {
 
         String mensagemApresentada = new LoginTela(app)
                 .preencherUsuario("admin")
@@ -45,13 +54,14 @@ public class ProdutoTest {
                 .submissaoComErro()
                 .obterMensagemErroProdutoComValorNaoPermitido();
 
-        //Válidar que a mensagem de valor inválido foi apresentada
+        // Validar que a mensagem de valor inválido foi apresentada
         Assertions.assertEquals("O valor do produto deve estar entre R$ 0,01 e R$ 7.000,00", mensagemApresentada);
     }
 
+    @Order(2)
     @DisplayName("Validação do Valor de Produto permitido")
     @Test
-    public void testValidacaoDoValorDeProdutoPermitido(){
+    public void testValidacaoDoValorDeProdutoPermitido() {
 
         String mensagemApresentada = new LoginTela(app)
                 .preencherUsuario("admin")
@@ -64,13 +74,15 @@ public class ProdutoTest {
                 .submissaoComErro()
                 .obterMensagemErroProdutoComValorNaoPermitido();
 
-        //Válidar que a mensagem de valor inválido foi apresentada
+        // Validar que a mensagem de sucesso foi apresentada
         Assertions.assertEquals("Produto adicionado com sucesso", mensagemApresentada);
     }
 
+    @Order(3)
     @DisplayName("Validação Editar Produto Cadastrado")
     @Test
-    public void testValidacaoEditarProduto(){
+    public void testValidacaoEditarProduto() {
+
         String mensagemApresentada = new LoginTela(app)
                 .preencherUsuario("admin")
                 .preencherSenha("admin")
@@ -85,9 +97,11 @@ public class ProdutoTest {
         Assertions.assertEquals("Produto alterado com sucesso", mensagemApresentada);
     }
 
+    @Order(4)
     @DisplayName("Validação Adicionar Componente")
     @Test
-    public void testValidacaoAdicionarComponente(){
+    public void testValidacaoAdicionarComponente() {
+
         String mensagemApresentada = new LoginTela(app)
                 .preencherUsuario("admin")
                 .preencherSenha("admin")
@@ -102,9 +116,11 @@ public class ProdutoTest {
         Assertions.assertEquals("Componente de produto adicionado com sucesso", mensagemApresentada);
     }
 
+    @Order(5)
     @DisplayName("Validação Excluir Componente Cadastrado")
     @Test
-    public void testValidacaoExcluirComponente(){
+    public void testValidacaoExcluirComponente() {
+
         String mensagemApresentada = new LoginTela(app)
                 .preencherUsuario("admin")
                 .preencherSenha("admin")
@@ -116,9 +132,11 @@ public class ProdutoTest {
         Assertions.assertEquals("Apagado!", mensagemApresentada);
     }
 
+    @Order(6)
     @DisplayName("Validação Excluir Produto Cadastrado")
     @Test
-    public void testValidacaoExcluirProduto(){
+    public void testValidacaoExcluirProduto() {
+
         String mensagemApresentada = new LoginTela(app)
                 .preencherUsuario("admin")
                 .preencherSenha("admin")
@@ -131,7 +149,7 @@ public class ProdutoTest {
     }
 
     @AfterEach
-    public void afterEach(){
+    public void afterEach() {
         app.quit();
     }
 }
