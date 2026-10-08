@@ -10,24 +10,20 @@ import pages.LoginPage;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginSteps {
-
     private LoginPage loginPage;
     private String usuario;
 
     @Before
-    public void inicializaTeste() {
-        Driver.inicializaNavegador();
-    }
+    public void inicializaTeste() { Driver.inicializaNavegador(); }
 
     @Dado("que esteja na pagina da lojinha")
     public void queEstejaNaPaginaDaLojinha() {
         Driver.getDriver().get("http://165.227.93.41/lojinha-web/v2/");
         loginPage = new LoginPage();
     }
-
 
     @Quando("o login for realizado com os seguintes dados")
     public void oLoginForRealizadoComOsSeguintesDados(Map<String, String> map) {
@@ -37,11 +33,9 @@ public class LoginSteps {
 
     @Entao("valido que o login foi realizado")
     public void validoQueOLoginFoiRealizado() {
-        assertEquals("Boas vindas, "+ usuario +"!", loginPage.obterMensagemBoasVindas());
+        assertEquals("Boas vindas, " + usuario + "!", loginPage.obterMensagemBoasVindas());
+    }
 
-    }
     @After
-    public void finalizaTeste(){
-        Driver.getDriver().quit();
-    }
+    public void finalizaTeste() { Driver.getDriver().quit(); }
 }
