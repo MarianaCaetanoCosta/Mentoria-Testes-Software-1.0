@@ -8,12 +8,12 @@ Projeto de automação Web com Selenium e Cucumber, utilizando BDD/Gherkin para 
 
 - Java 22
 - Maven
-- Selenium Java 4.24.0
-- Cucumber JVM 7.18.1
-- Cucumber JUnit 7.18.1
+- Selenium Java 4.50.0
+- Cucumber JVM 7.34.9
+- Cucumber JUnit Platform Engine 7.34.9
 - Gherkin
 - Page Object
-- JUnit
+- JUnit 5 (Jupiter) 5.14.2
 - IntelliJ IDEA
 - Visual Studio Code
 
@@ -88,13 +88,15 @@ Para executar o ciclo completo e gerar o relatório configurado:
 mvn verify
 ```
 
-A execução pode ser realizada pelo terminal ou por qualquer ambiente de desenvolvimento compatível com projetos Java/Maven. Não há dependência de uma IDE específica.
+A execução pode ser realizada pelo terminal ou por uma IDE compatível com Java/Maven.
+
+O projeto utiliza JUnit 5 por meio da JUnit Platform e o Cucumber JUnit Platform Engine. O runner `RunnerTest.java` configura a execução das features, o pacote de steps e a geração do relatório.
 
 ## Execução pelas IDEs
 
 ### IntelliJ IDEA
 
-O projeto pode ser executado diretamente pelo IntelliJ IDEA, utilizando o suporte a testes Java/Cucumber e o runner `RunnerTest.java`. O IntelliJ IDEA oferece suporte à execução de testes e ao Cucumber mediante o plugin correspondente. citeturn0search4turn0search8
+O projeto pode ser executado diretamente pelo IntelliJ IDEA utilizando o `RunnerTest.java`. O IntelliJ IDEA possui suporte à JUnit Platform e ao Cucumber.
 
 Também é possível executar pelo terminal integrado:
 
@@ -104,9 +106,7 @@ mvn test
 
 ### Visual Studio Code
 
-O projeto também pode ser executado no Visual Studio Code. O suporte a testes Java permite executar e depurar testes JUnit 4, utilizado pelo `RunnerTest.java`, por meio do Extension Pack for Java. citeturn0search5
-
-Como alternativa, utilize o terminal integrado:
+O projeto também pode ser executado no Visual Studio Code com as extensões de suporte a Java/JUnit. Como alternativa, utilize o terminal integrado:
 
 ```bash
 mvn test
@@ -142,6 +142,10 @@ mvn verify
 - [Maven](https://maven.apache.org/guides/)
 
 ## Observações
+
+- O projeto foi migrado de Cucumber + JUnit 4 para Cucumber + JUnit 5 utilizando o JUnit Platform Engine.
+- O `cucumber-junit` não é mais utilizado neste projeto.
+- O Selenium e o Cucumber foram atualizados para versões atuais compatíveis com o projeto.
 
 - A versão do Java utilizada pelo projeto é a 22.
 - As versões das dependências estão definidas no `pom.xml`.
